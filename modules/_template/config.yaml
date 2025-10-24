@@ -1,0 +1,77 @@
+# Solo Station Module Configuration
+# Template for robot integration
+
+robot:
+  name: "robot_name"
+  type: "manipulator"  # manipulator, mobile, humanoid, hand, gripper, quadruped
+  manufacturer: "manufacturer_name"
+  dof: 6
+  open_source: true
+
+workspace:
+  dimensions:
+    x: 500  # mm
+    y: 500  # mm
+    z: 400  # mm
+  origin:
+    x: 0
+    y: 0
+    z: 0
+
+mounting:
+  type: "custom"  # standard, custom
+  bolt_pattern: "M4"
+  bolt_count: 4
+  adapter_required: true
+
+sensors:
+  cameras:
+    - name: "wrist_camera"
+      type: "rgb"
+      resolution: [640, 480]
+      position: [0, 0, 100]
+      orientation: [0, 0, 0]
+
+  force_torque:
+    enabled: false
+    position: "end_effector"
+
+  tactile:
+    enabled: false
+
+calibration:
+  marker_type: "aruco"
+  marker_size: 50  # mm
+  marker_positions:
+    - [100, 100, 0]
+    - [100, -100, 0]
+    - [-100, 100, 0]
+    - [-100, -100, 0]
+
+data_collection:
+  frequency: 30  # Hz
+  format: "hdf5"
+  compression: true
+
+  recorded_data:
+    - "joint_positions"
+    - "joint_velocities"
+    - "camera_rgb"
+    - "timestamps"
+
+safety:
+  joint_limits:
+    enabled: true
+    margin: 0.05  # radians or mm
+
+  velocity_limits:
+    max_joint_velocity: 1.0  # rad/s or m/s
+
+  emergency_stop:
+    enabled: true
+    trigger: "external"
+
+integration:
+  ros_version: "ros2"  # ros1, ros2, none
+  control_interface: "position"  # position, velocity, torque
+  communication: "serial"  # serial, ethernet, usb

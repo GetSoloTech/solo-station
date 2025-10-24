@@ -65,10 +65,31 @@ cd solo-station
 - **Production**: Deploy reliable inference stations across distributed locations
 - **Education**: Reproducible setup for teaching robotics and AI concepts
 
+## Supported Robots
+
+Solo Station supports a wide variety of robot platforms from [robotsthatexist.com](https://robotsthatexist.com) and beyond:
+
+- **Manipulators**: Robot arms and manipulation platforms
+- **Mobile Robots**: Wheeled and tracked ground robots
+- **Humanoids**: Full-body and upper-torso platforms
+- **Hands**: Dexterous manipulation and multi-fingered hands
+- **Grippers**: End-effectors and grasping mechanisms
+- **Quadrupeds**: Four-legged dynamic platforms
+
+Each robot category includes ready-to-use integration modules with mounting adapters, calibration files, and example code. See the [`modules/`](modules/) directory for details.
+
 ## Project Structure
 
 ```
 solo-station/
+├── modules/         # Robot integration modules by category
+│   ├── manipulators/
+│   ├── mobile/
+│   ├── humanoids/
+│   ├── hands/
+│   ├── grippers/
+│   ├── quadrupeds/
+│   └── _template/   # Template for creating new modules
 ├── models/          # 3D printable models (STL files)
 ├── docs/            # Assembly guides and documentation
 ├── examples/        # Sample configurations and use cases
